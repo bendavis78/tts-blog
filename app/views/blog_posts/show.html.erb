@@ -1,0 +1,32 @@
+<div class="container">
+  <div class="section">
+
+    <p id="notice"><%= notice %></p>
+
+    <h1 class="header center text-lighten-2"><%= @blog_post.title %></h1>
+
+    <p>
+      <strong>Author:</strong>
+      <%= @blog_post.user.email %>
+    </p>
+
+    <p>
+      <strong>Blog entry:</strong>
+      <%= @blog_post.blog_entry %>
+    </p>
+
+    <%= link_to 'Edit', edit_blog_post_path(@blog_post), class:"btn" %>
+    <%= link_to 'Back', blog_posts_path, class:"btn" %>
+
+		<%= render 'comments/form' %>
+		
+		<% @blog_post.comments.each do |comment| %>
+		<div class="card">
+			<div class="card-content">
+				<p><b><%=comment.user.email %></b> said:</p>
+				<p><%=comment.comment_entry%></p>
+			</div>
+		</div>
+		<%end%>
+    
+</div>
